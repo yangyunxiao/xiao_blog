@@ -10,8 +10,4 @@ tags:
     - Python
 ---
 
-#Android WeakLock详解
-#Android WeakLock详解
-#Android WeakLock详解
-#Android WeakLock详解
-#Android WeakLock详解
+*Android WeakLock*
