@@ -7,6 +7,7 @@ author:     "yunxiao"
 header-img: "img/android_header.jpg"
 tags:
     - Android
+    - Python
 ---
 
 #Android WeakLock详解
