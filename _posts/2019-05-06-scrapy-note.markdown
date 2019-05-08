@@ -10,24 +10,6 @@ tags:
     - 爬虫
 ---
 
-<p style="font-size:24px;font-weight:800">markdown语法</p>
-
-***创建环境***
->引用
->>标题1
->>>hhh
----
-[百度一下](http://www.baidu.com)
-+ 列表
-+ 列表2
-   1. 嘿嘿   
-   2. 嘻嘻
-   3. 哈哈
-   
-课程表|星期一|星期二
-:---:|:---:|:---:
-第一节|语文|数学
-第二节|体育|英语
 
 ```
 public static void main (String[] args){
