@@ -10,5 +10,5 @@ tags:
     - Framework
 ---
 
-<h2>{{page.title}}</h2>
-<p>{{page.date | date_to_string}}</p>
+
+UI线程即是应用刷新UI显示所在的线程
