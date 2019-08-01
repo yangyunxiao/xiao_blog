@@ -19,11 +19,21 @@ public static void main(String[] args) {
         Looper.prepareMainLooper();
        
         ActivityThread thread = new ActivityThread();
-        
+
         thread.attach(false, startSeq);
 
         Looper.loop();
 
+        //只要应用在正常运行  就不会执行到这行
         throw new RuntimeException("Main thread loop unexpectedly exited");
     }
 ```
+以上一段代码既是应用启动的入口核心代码
+创建绑定主线程度Looper对象，开启loop循环，之后即可处理主线程的消息啦
+
+整个Handler机制包含 Handler、Looper、MessageQueue、Message等四个类
+
+MessageQueue是一个单链表、内部消息按照时间戳when排序，调用equeueMessage方法将消息压如链表中
+
+Handler 发送消息，处理消息回调，是处理消息时所在的线程，Handler构建时会从当前线程TSL（Thread Storage Local）中取出Looper对象并持有，App主线程中的Looper实在ActivityThread main方法中创建的，因此在主线程中创建Handler已经存在Looper对象，而在子线程中开始是没有Looper对象的，创建Handler之前需要先调用Looper.prepare，为当前线程绑定一个Looper对象并保存的到ThreadLocal中之后调用Looper.loop即可开启消息循环了
+
