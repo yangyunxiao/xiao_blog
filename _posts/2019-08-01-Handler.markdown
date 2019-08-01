@@ -1,0 +1,14 @@
+---
+layout:     post
+title:      "应用的UI线程启动"
+subtitle:   "应用的UI线程启动"
+date:       2019-06-02
+author:     "xiao"
+header-img: "img/android_header.jpg"
+tags:
+    - Android
+    - Framework
+---
+
+
+UI线程即是应用刷新UI显示所在的线程
