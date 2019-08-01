@@ -1,8 +1,8 @@
 ---
 layout:     post
-title:      "应用的UI线程启动"
-subtitle:   "应用的UI线程启动"
-date:       2019-06-02
+title:      "Handler机制"
+subtitle:   "保证应用正常运行的引擎"
+date:       2019-08-01
 author:     "xiao"
 header-img: "img/android_header.jpg"
 tags:
@@ -11,4 +11,19 @@ tags:
 ---
 
 
-UI线程即是应用刷新UI显示所在的线程
+Handler机制，贯穿应用整个生命周期，保证应用正常处理消息的基础，应用启动由AMS通过Socket想Zygote发起跨进程调用，Zygote通过fork系统调用创建子进程，将进程号返回到AMS，之后AMS创建应用的ActivityThread类调用main方法
+```java
+
+public static void main(String[] args) {
+
+        Looper.prepareMainLooper();
+       
+        ActivityThread thread = new ActivityThread();
+        
+        thread.attach(false, startSeq);
+
+        Looper.loop();
+
+        throw new RuntimeException("Main thread loop unexpectedly exited");
+    }
+```
