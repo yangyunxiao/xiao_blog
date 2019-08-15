@@ -1,7 +1,7 @@
 ---
 layout:     post
-title:      "Android线程池"
-subtitle:   "如何合理的创建线程池"
+title:      "Java设计模式-单例"
+subtitle:   "大多数人第一个接触到的设计模式"
 date:       2019-03-23
 author:     "xiao"
 header-img: "img/java.png"
