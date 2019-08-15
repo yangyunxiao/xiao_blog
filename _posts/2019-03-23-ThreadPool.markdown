@@ -7,6 +7,7 @@ author:     "xiao"
 header-img: "img/android_header.jpg"
 tags:
     - Android
+    - Thread
     - Framework
 ---
 
