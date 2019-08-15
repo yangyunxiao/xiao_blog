@@ -125,17 +125,23 @@ new RejectedExecutionHandler(){
  ```
  - ScheduledThreadPool
  ```java
- ```
-
- - SingleThreadExecutor
- ```java
- //此线程池只有一个核心线程且最大线程数为1，确保所有的任务在线程中被顺序执行，最大的意义在于统一所有外界的任务在一个线程中执行，从而不必
- //处理线程同步的问题
- public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory) {
-        return new FinalizableDelegatedExecutorService
-            (new ThreadPoolExecutor(1, 1,
-                                    0L, TimeUnit.MILLISECONDS,
-                                    new LinkedBlockingQueue<Runnable>(),
-                                    threadFactory));
+ //核心线程数是固定的 而非核心线程数是没有上限的，并且非核心线程如果闲置会立即被回收，这类线程主要用来执行定时任务和具有固定周期的重复任务
+ public static ScheduledExecutorService newScheduledThreadPool(
+            int corePoolSize, ThreadFactory threadFactory) {
+        return new ScheduledThreadPoolExecutor(corePoolSize, threadFactory);
  }
+
+ //ScheduledThreadPoolExecutor extends ThreadPoolExecutor
+ public ScheduledThreadPoolExecutor(int corePoolSize,
+                                       RejectedExecutionHandler handler) {
+        super(corePoolSize, Integer.MAX_VALUE,
+              DEFAULT_KEEPALIVE_MILLIS, MILLISECONDS,
+              new DelayedWorkQueue(), handler);
+ }
+
+ ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(4);
+ //2000m后执行command<Runnable>
+ threadPool.schedule(command,2000,TimeUnit.MILLISECONDS)
+ //延迟10ms后，每个1000ms执行一次command
+ threadPool.scheduleAtFixedRate(command,10,1000,TimeUnit.MILLISECONDS);
  ```
