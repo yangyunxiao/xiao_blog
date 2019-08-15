@@ -101,7 +101,7 @@ new RejectedExecutionHandler(){
 };
 ```
 
-###在Android当中通过配置不同的 ThreadPoolExecutor , 定义了四种类型的线程池
+### 在Android当中通过配置不同的 ThreadPoolExecutor , 定义了四种类型的线程池
  - FixedThreadPool
  ```java
  //线程数量固定的线程池，只有核心线程没有非核心线程，并且不会被回收，能更快地接受外界的请求作出响应，任务队列也是没有大小限制的
