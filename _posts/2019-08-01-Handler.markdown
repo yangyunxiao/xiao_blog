@@ -11,7 +11,7 @@ tags:
 ---
 
 
-Handler机制，贯穿应用整个生命周期，保证应用正常处理消息的基础，应用启动由AMS通过Socket想Zygote发起跨进程调用，Zygote通过fork系统调用创建子进程，将进程号返回到AMS，之后AMS创建应用的ActivityThread类调用main方法
+Handler机制，贯穿应用整个生命周期，保证应用正常处理消息的基础，应用进程启动由AMS通过Socket想Zygote发起跨进程调用，Zygote通过fork系统调用创建子进程，将进程号返回到AMS，之后AMS创建应用的ActivityThread类调用main方法
 ```java
 
 public static void main(String[] args) {
@@ -20,6 +20,7 @@ public static void main(String[] args) {
        
         ActivityThread thread = new ActivityThread();
 
+        //想AMS报告应用启动完成 
         thread.attach(false, startSeq);
 
         Looper.loop();
