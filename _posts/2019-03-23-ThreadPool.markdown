@@ -139,6 +139,11 @@ new RejectedExecutionHandler(){
               new DelayedWorkQueue(), handler);
  }
 
+ ScheduledExecutorService threadPool = Executors.newScheduledThreadPool(4);
+ //2000m后执行command<Runnable>
+ threadPool.schedule(command,2000,TimeUnit.MILLISECONDS)
+ //延迟10ms后，每个1000ms执行一次command
+ threadPool.scheduleAtFixedRate(command,10,1000,TimeUnit.MILLISECONDS);
  ```
  - SingleThreadExecutor
  ```java
