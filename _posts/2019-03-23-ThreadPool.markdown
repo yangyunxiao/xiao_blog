@@ -125,8 +125,8 @@ new RejectedExecutionHandler(){
  ```
  - ScheduledThreadPool
  ```java
- 
  ```
+
  - SingleThreadExecutor
  ```java
  //此线程池只有一个核心线程且最大线程数为1，确保所有的任务在线程中被顺序执行，最大的意义在于统一所有外界的任务在一个线程中执行，从而不必
