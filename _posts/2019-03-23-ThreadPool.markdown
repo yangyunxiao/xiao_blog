@@ -125,12 +125,7 @@ new RejectedExecutionHandler(){
  ```
  - ScheduledThreadPool
  ```java
- //核心线程数是固定的,而非核心线程数是没有上限的，并且非核心线程如果闲置会立即被回收，这类线程主要用来执行定时任务和具有固定周期的重复任务
- public static ScheduledExecutorService newScheduledThreadPool(
-            int corePoolSize, ThreadFactory threadFactory) {
-        return new ScheduledThreadPoolExecutor(corePoolSize, threadFactory);
- }
-
+ 
  //ScheduledThreadPoolExecutor extends ThreadPoolExecutor
  public ScheduledThreadPoolExecutor(int corePoolSize,
                                        RejectedExecutionHandler handler) {
