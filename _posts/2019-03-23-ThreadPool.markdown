@@ -101,4 +101,54 @@ new RejectedExecutionHandler(){
 };
 ```
 
+在Android当中通过配置不同的 ThreadPoolExecutor , 定义了四种类型的线程池
+ - FixedThreadPool
+ ```java
+ //线程数量固定的线程池，只有核心线程没有非核心线程，并且不会被回收，能更快地接受外界的请求作出响应，任务队列也是没有大小限制的
+ public static ExecutorService newFixedThreadPool(int nThreads, ThreadFactory threadFactory) {
+    return new ThreadPoolExecutor(nThreads, nThreads,
+                                      0L, TimeUnit.MILLISECONDS,
+                                      new LinkedBlockingQueue<Runnable>(),
+                                      threadFactory);
+ }
+ ```
+ - CachedThreadPool
+ ```java
+ //是一种线程数量不固定的线程池，最大线程数是Integer.MAX_VALUE相当于无限大，任务队列是个空队列无法存入数据，意味着一旦有任务进来就会开辟
+ //新的线程，当整个线程池都闲置时，其中的线程会因为超时而被停止，这是线程池中没有任何线程，不占用任何系统资源
+ public static ExecutorService newCachedThreadPool(ThreadFactory threadFactory) {
+        return new ThreadPoolExecutor(0, Integer.MAX_VALUE,
+                                      60L, TimeUnit.SECONDS,
+                                      new SynchronousQueue<Runnable>(),
+                                      threadFactory);
+ }
+ ```
+ - ScheduledThreadPool
+ ```java
+ //核心线程数是固定的 而非核心线程数是没有上限的，并且非核心线程如果闲置会立即被回收，这类线程主要用来执行定时任务和具有固定周期的重复任务
+ public static ScheduledExecutorService newScheduledThreadPool(
+            int corePoolSize, ThreadFactory threadFactory) {
+        return new ScheduledThreadPoolExecutor(corePoolSize, threadFactory);
+ }
 
+ //ScheduledThreadPoolExecutor extends ThreadPoolExecutor
+ public ScheduledThreadPoolExecutor(int corePoolSize,
+                                       RejectedExecutionHandler handler) {
+        super(corePoolSize, Integer.MAX_VALUE,
+              DEFAULT_KEEPALIVE_MILLIS, MILLISECONDS,
+              new DelayedWorkQueue(), handler);
+ }
+
+ ```
+ - SingleThreadExecutor
+ ```java
+ //此线程池只有一个核心线程且最大线程数为1，确保所有的任务在线程中被顺序执行，最大的意义在于统一所有外界的任务在一个线程中执行，从而不必
+ //处理线程同步的问题
+ public static ExecutorService newSingleThreadExecutor(ThreadFactory threadFactory) {
+        return new FinalizableDelegatedExecutorService
+            (new ThreadPoolExecutor(1, 1,
+                                    0L, TimeUnit.MILLISECONDS,
+                                    new LinkedBlockingQueue<Runnable>(),
+                                    threadFactory));
+ }
+ ```
