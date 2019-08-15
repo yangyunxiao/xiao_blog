@@ -85,7 +85,7 @@ new ThreadFactory() {
 
 RejectedExecutionHandler 当线程无法执行新任务时，可能是任务队列已满或无法成功执行任务，会回调此方法通知调用者
 
- ### ThreadPoolExecutor 执行任务遵循以下原则
+### ThreadPoolExecutor 执行任务遵循以下原则
 
  - 如果线程池中的线程数量未达到核心线程的数量，则直接开启一个核心线程执行任务
  - 如果线程池中的线程数量已达到核心线程的数量，则将新添加的任务添加到任务队列当中等到执行
