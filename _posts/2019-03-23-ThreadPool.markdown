@@ -69,17 +69,17 @@ tags:
 
  threadFactory 线程工厂，用于为线程池提供新线程
 ```java
-            new ThreadFactory() {
-                @Override
-                public Thread newThread(Runnable r) {
+new ThreadFactory() {
+    @Override
+    public Thread newThread(Runnable r) {
 
-                    Thread thread = new Thread(r);
-                    //为新创建的线程设置线程名  设置线程优先级
-                    thread.setName("ThreadPoolUtils");
-                    thread.setPriority(Process.THREAD_PRIORITY_DEFAULT);
-                    return thread;
-                }
-            })
+    Thread thread = new Thread(r);
+    //为新创建的线程设置线程名  设置线程优先级
+    thread.setName("ThreadPoolUtils");
+    thread.setPriority(Process.THREAD_PRIORITY_DEFAULT);
+    return thread;
+    }
+})
 
 ```
 
@@ -91,3 +91,12 @@ RejectedExecutionHandler 当线程无法执行新任务时，可能是任务队�
  - 如果线程池中的线程数量已达到核心线程的数量，则将新添加的任务添加到任务队列当中等到执行
  - 如果任务队列已满且核心线程数量已达到最大数量，则开启一个非核心线程来执行这个任务
  - 如果非核心线程数量已达最大值，且任务队列和核心线程数量都满了，则调用 RejectedExecutionHandler 的 rejectedExecution 方法通知调用者
+
+```java
+new RejectedExecutionHandler(){
+    @Override
+    public void rejectedExecution(Runnable r, ThreadPoolExecutor executor) {
+
+    }
+};
+```
