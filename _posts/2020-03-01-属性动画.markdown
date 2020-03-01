@@ -1,0 +1,36 @@
+---
+layout:     post
+title:      "Android属性动画"
+subtitle:   "属性动画解析"
+date:       2020-03-01
+author:     "xiao"
+header-img: "img/android_header.jpg"
+tags:
+    - Android
+    - View
+
+---
+
+
+
+
+## 属性动画
+
+通过不断改变View的属性实现动画
+
+#### View的动画实现
+
+TODO
+
+#### 如何使用属性动画
+
+TODO
+
+#### 属性动画的原理解析
+
+TODO
+
+#### Q1：属性动画和View的动画有什么区别？
+
+​	两者都能实现View的动画，View动画在发生位置改变之后，点击事件并不会随着迁移，会造成点击事件失效。而属性动画不会有这方面的缺陷
+
