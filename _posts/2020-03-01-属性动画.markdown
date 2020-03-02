@@ -24,7 +24,7 @@ TODO
 
 #### 如何使用属性动画
 
-TODO
+ObjectAnimator 和 ValueAnimator 两个主要的实现类
 
 #### 属性动画的原理解析
 
@@ -34,7 +34,7 @@ TODO
 
 依据时间的流逝计算动画进度值
 
-##### TypeEvaluator 估值器
+#### TypeEvaluator 估值器
 
 依据动画进度值计算当前动画执行的具体值
 
